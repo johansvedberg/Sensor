@@ -11,6 +11,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Compass extends AppCompatActivity implements SensorEventListener {
@@ -21,6 +24,7 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
 
     private TextView textView;
     private TextView textViewInfo;
+    private ImageView rose;
   /*  private float[] inR = new float[16];
     private float[] I = new float[16];
     private float[] gravity = new float[3];
@@ -35,6 +39,7 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
     //private float[] rotationMatrixNewResult;
 
     private int azimuth = 0;
+    private int currentDegree;
     //Rose rose;
 
     @Override
@@ -45,7 +50,7 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
         //setContentView(rose);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mComp = mSensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY);
         mComp1 = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
@@ -58,6 +63,7 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
 
         textView = (TextView) findViewById(R.id.degree);
         textViewInfo = (TextView) findViewById(R.id.info);
+        rose = (ImageView) findViewById(R.id.rose);
 
 
     }
@@ -113,27 +119,35 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
 
 
         } else if (azimuth > 195 && azimuth < 255) {
-            textView.setText(String.valueOf(azimuth) +"° SOUTHWEST");
+            textView.setText(String.valueOf(azimuth) + "° SOUTHWEST");
 
 
         } else if (azimuth > 165 && azimuth < 195) {
-            textView.setText(String.valueOf(azimuth) +"° SOUTH");
+            textView.setText(String.valueOf(azimuth) + "° SOUTH");
 
 
         } else if (azimuth > 105 && azimuth < 165) {
-            textView.setText(String.valueOf(azimuth) +"° SOUTHEAST");
+            textView.setText(String.valueOf(azimuth) + "° SOUTHEAST");
 
 
         } else if (azimuth > 77 && azimuth < 105) {
-            textView.setText(String.valueOf(azimuth) +"° EAST");
+            textView.setText(String.valueOf(azimuth) + "° EAST");
 
 
         } else if (azimuth > 20 && azimuth < 75) {
-            textView.setText(String.valueOf(azimuth) +"° NORTHEAST");
+            textView.setText(String.valueOf(azimuth) + "° NORTHEAST");
 
         }
 
+        RotateAnimation ra = new RotateAnimation(currentDegree, -azimuth, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
 
+        ra.setDuration(210);
+
+        ra.setFillAfter(true);
+
+        rose.startAnimation(ra);
+
+        currentDegree = -azimuth;
         // rose.setDirection(azimuth.intValue());
 
         /*
