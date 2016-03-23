@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
-    public final static String EXTRA_MESSAGE = "com.johansvedberg.sensor.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,18 +21,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
-
-
-
-
-
-   /* public void sendMessage (View view){
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.edit_message);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
-    }*/
     public void openAcc(View view){
         Intent intent = new Intent(this, Accelerometer.class);
         startActivity(intent);
