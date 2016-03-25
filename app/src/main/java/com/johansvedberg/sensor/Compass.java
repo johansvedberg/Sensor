@@ -41,14 +41,9 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
         rotationMatrix = new float[9];
         rotationMatrixResult = new float[3];
 
-
         textView = (TextView) findViewById(R.id.degree);
-
         rose = (ImageView) findViewById(R.id.rose);
-
-
     }
-
 
     @Override
     public final void onAccuracyChanged(Sensor sensor, int accuracy) {
