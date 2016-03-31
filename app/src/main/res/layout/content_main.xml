@@ -8,7 +8,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_main">
+    tools:showIn="@layout/activity_main"
+    android:id="@+id/container"
+    >
 
     <!--<LinearLayout
         android:layout_width="match_parent"
@@ -52,6 +54,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="openComp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="?attr/colorPrimaryDark"
+        android:textColor="@android:color/primary_text_dark"
+        android:layout_marginBottom="10dp"
+        />
+
+    <Button
+        android:id="@+id/button3"
+        android:text="@string/button_cam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="openCam"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="?attr/colorPrimaryDark"

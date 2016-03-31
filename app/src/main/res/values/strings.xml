@@ -5,6 +5,7 @@
     <string name="button_send">Send</string>
     <string name="button_acc">Accelerometer</string>
     <string name="button_comp">Compass</string>
+    <string name="button_cam">Camera</string>
     <string name="title_activity_accelerometer">Accelerometer</string>
     <string name="title_activity_display_message">My Message</string>
     <string name="title_activity_compass">Compass</string>
